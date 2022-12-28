@@ -20,9 +20,10 @@ export default {
     this.renderer.setClearColor(0x000000,0)
     this.$refs.playground.appendChild( this.renderer.domElement );
 
-    const darkPurple = getComputedStyle(document.documentElement).getPropertyValue('--color-primary');
-    const lightPurple = getComputedStyle(document.documentElement).getPropertyValue('--color-third');
-    const secondary = getComputedStyle(document.documentElement).getPropertyValue('--color-secondary');
+    const darkPurple = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-primary').replace("#","0x"),16);
+    const lightPurple = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-third').replace("#","0x"),16);
+    const secondary = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-secondary').replace("#","0x"),16);
+
 
     const sphereGeometry = new THREE.SphereGeometry( 50,32,16);
     const sphereMaterial = new THREE.MeshBasicMaterial( { color: darkPurple, wireframe: true } );

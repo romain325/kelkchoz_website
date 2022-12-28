@@ -1,9 +1,9 @@
 <template>
   <h1 v-if="!loaded">Loading....</h1>
-
-  <button @click="setSource('/pdf/cv_fr.pdf')">FR</button>
-  <button @click="setSource('/pdf/cv_en.pdf')">EN</button>
-
+  <div class="flex justify-evenly">
+    <button class="btn" @click="setSource('/pdf/cv_fr.pdf')">🇫🇷</button>
+    <button class="btn" @click="setSource('/pdf/cv_en.pdf')">🇬🇧</button>
+  </div>
   <div :style="{visibility: !loaded ? 'hidden' : 'visible'}" class="block h-full w-full overflow-y-scroll" ref="pdfHolder">
     <vue-pdf-embed
         :source="source"
@@ -13,10 +13,17 @@
   </div>
 </template>
 
+<style scoped>
+.btn {
+  @apply bg-primary rounded font-bold py-2 px-4 mb-4 mt-4;
+}
+</style>
+
 <script lang="ts">
 import VuePdfEmbed from "vue-pdf-embed";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   components: {
     VuePdfEmbed
   },
@@ -51,9 +58,6 @@ export default {
       this.source = source;
     }
   }
-}
+});
 </script>
 
-<style scoped>
-
-</style>

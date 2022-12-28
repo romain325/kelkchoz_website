@@ -10,10 +10,10 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
 
     <div class="lg:flex lg:place-items-start lg:flex-wrap">
-      <nav class="w-full">
+      <nav class="w-full lg:flex lg:flex-col">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/cv">Curriculum</RouterLink>
+        <RouterLink to="/about">Me</RouterLink>
       </nav>
     </div>
   </header>

@@ -5,82 +5,73 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+import IconQuestion from "@/components/icons/IconQuestion.vue";
+import IconGraduationCap from "@/components/icons/IconGraduationCap.vue";
+import IconPeace from "@/components/icons/IconPeace.vue";
+import IconSport from "@/components/icons/IconSport.vue";
+import IconSupport from "@/components/icons/IconSupport.vue";
+import IconDocumentation from "@/components/icons/IconDocumentation.vue";
 </script>
 
 <template>
   <WelcomeItem>
     <template #icon>
-      <DocumentationIcon />
+      <IconPeace class="w-6"/>
     </template>
-    <template #heading>Documentation</template>
+    <template #heading>Me</template>
 
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
+    <p>Hey, I'm Romain OLIVIER a {{new Date().getFullYear() - 2001}} years old french full-stack developer. Even if I have a preference for backend development I do appreciate both aspects.</p>
+    <p>I also like low level development, DevOps and other aspects of programmation which I explore on my personal time.</p>
   </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
-      <ToolingIcon />
+      <IconGraduationCap class="w-6" />
     </template>
-    <template #heading>Tooling</template>
+    <template #heading>Studies</template>
 
-    This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
-    you need to test your components and web pages, check out
-    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> and
-    <a href="https://on.cypress.io/component" target="_blank">Cypress Component Testing</a>.
-
-    <br />
-
-    More instructions are available in <code>README.md</code>.
+    <p>
+      I graduated high school in 2019 and obtained a BAC S with "mention bien".
+      <br>
+      Then I obtained a "DUT Informatique" in 2021 at Clermont-Ferrand university.
+      <br>
+      After that I started a Computer Science engineer degree in 3IL Limoges and {{new Date() > new Date(2024, 9-1, 1) ? 'obtained it in 2024': 'will finish it in 2024'}}.
+    </p>
   </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
-      <EcosystemIcon />
+      <IconSport class="w-6" />
     </template>
-    <template #heading>Ecosystem</template>
+    <template #heading>Hobbies</template>
 
-    Get official tools and libraries for your project:
-    <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
+    <p>I do a lot of sport, mostly the gym and I'm training to get my rail back into martial arts
+      <br>
+      I love music of all genres from jazz to tekno, metal, classic, indie-pop. I do play music too from time to time and try to compose some.
+      <br>
+      Art in general is a really important part of my life and I like it through a lot of vectors and one especially which is Tattoo.
+    </p>
   </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
-      <CommunityIcon />
+      <IconDocumentation/>
     </template>
-    <template #heading>Community</template>
+    <template #heading>Work experience</template>
 
-    Got stuck? Ask your question on
-    <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Vue Land</a>, our official
-    Discord server, or
-    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener"
-      >StackOverflow</a
-    >. You should also subscribe to
-    <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a> and follow
-    the official
-    <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
-    twitter account for latest news in the Vue world.
+    I had a few work experiences, multiple short term mission with Dalkia.
+    <br>
+    A three months intership at SOeMAN.
+    <br>
+    And a three year internship that {{new Date() < new Date(2024, 9-1, 1) ? "will end" : "ended"}} on september 2024.
   </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
-      <SupportIcon />
+      <IconQuestion class="w-4" />
     </template>
-    <template #heading>Support Vue</template>
+    <template #heading>Is this the default Vue component ?</template>
 
-    As an independent project, Vue relies on community backing for its sustainability. You can help
-    us by
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
+    And you're absolutely right mate, once again I'm not the best designer you've ever seen so sometimes it's cool to keep what's already built!
   </WelcomeItem>
 </template>
