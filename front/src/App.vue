@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <header class="leading-6 max-h-screen lg:flex lg:place-items-center ">
     <div class="lg:w-32  lg:mr-6">
-      <img class="lg:hover:scale-75  ease-in-out duration-700 transition" src="@/assets/kelkchoz.png" />
+      <img class="lg:hover:scale-75  ease-[cubic-bezier(0.80,0.10,0.60,0.040)] duration-700 transition" src="@/assets/kelkchoz.png" />
     </div>
 
     <div class="lg:flex lg:place-items-start lg:flex-wrap">
