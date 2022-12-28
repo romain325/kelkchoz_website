@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import HomeBackground from "@/components/HomeBackground.vue";
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <HomeBackground class="lg:h-full"/>
 </template>

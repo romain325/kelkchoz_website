@@ -17,13 +17,22 @@ export default {
     renderer.setClearColor(0x000000,0)
     this.$refs.playground.appendChild( renderer.domElement );
 
+    const darkPurple = getComputedStyle(document.documentElement).getPropertyValue('--color-primary');
+    const lightPurple = getComputedStyle(document.documentElement).getPropertyValue('--color-third');
+    const secondary = getComputedStyle(document.documentElement).getPropertyValue('--color-secondary');
+
     const sphereGeometry = new THREE.SphereGeometry( 50,32,16);
-    const sphereMaterial = new THREE.MeshBasicMaterial( { color: 0x222, wireframe: true } );
+    const sphereMaterial = new THREE.MeshBasicMaterial( { color: darkPurple, wireframe: true } );
     const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
     scene.add( sphere );
 
+    const sphereGeometry2 = new THREE.SphereGeometry( 55,16,8);
+    const sphereMaterial2 = new THREE.MeshBasicMaterial( { color: secondary, wireframe: true } );
+    const sphere2 = new THREE.Mesh( sphereGeometry2, sphereMaterial2 );
+    scene.add( sphere2 );
+
     const torusKnotGeom = new THREE.TorusKnotGeometry(28,8,50,8);
-    const torusKnotMaterial = new THREE.MeshBasicMaterial( { color: 0xfafafa, wireframe: true } );
+    const torusKnotMaterial = new THREE.MeshBasicMaterial( { color: lightPurple, wireframe: true } );
     const torusKnot = new THREE.Mesh( torusKnotGeom, torusKnotMaterial );
     scene.add(torusKnot);
 
@@ -51,6 +60,8 @@ export default {
       resizeRender();
       sphere.rotation.x += 0.001;
       sphere.rotation.y += 0.001;
+      sphere2.rotation.x += 0.001;
+      sphere2.rotation.y += 0.001;
 
       torusKnot.rotation.x += 0.005;
       torusKnot.rotation.y += 0.005;
