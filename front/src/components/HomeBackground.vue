@@ -7,15 +7,18 @@
 import * as THREE from "three";
 
 export default {
-
+  data() {
+    return {
+      renderer: new THREE.WebGLRenderer({alpha: true})
+    }
+  },
   mounted() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 80, this.$refs.playground.clientWidth/this.$refs.playground.clientHeight, 0.1, 1000 );
 
-    const renderer = new THREE.WebGLRenderer({alpha: true});
-    renderer.setSize( this.$refs.playground.clientWidth,this.$refs.playground.clientHeight );
-    renderer.setClearColor(0x000000,0)
-    this.$refs.playground.appendChild( renderer.domElement );
+    this.renderer.setSize( this.$refs.playground.clientWidth,this.$refs.playground.clientHeight );
+    this.renderer.setClearColor(0x000000,0)
+    this.$refs.playground.appendChild( this.renderer.domElement );
 
     const darkPurple = getComputedStyle(document.documentElement).getPropertyValue('--color-primary');
     const lightPurple = getComputedStyle(document.documentElement).getPropertyValue('--color-third');
@@ -45,18 +48,17 @@ export default {
     }
 
     const resizeRender = () => {
-      const canvas = renderer.domElement;
+      const canvas = this.renderer.domElement;
       const playground = this.$refs.playground;
       const needAdaptation = canvas.width !== playground.clientWidth || canvas.height !== playground.clientHeight;
       if(needAdaptation) {
-        renderer.setSize(playground.clientWidth, playground.clientHeight);
+        this.renderer.setSize(playground.clientWidth, playground.clientHeight);
         camera.aspect = playground.clientWidth/playground.clientHeight;
         camera.updateProjectionMatrix();
       }
     }
 
-    function animate() {
-      requestAnimationFrame( animate );
+    const animate = () => {
       resizeRender();
       sphere.rotation.x += 0.001;
       sphere.rotation.y += 0.001;
@@ -67,10 +69,13 @@ export default {
       torusKnot.rotation.y += 0.005;
       torusKnot.rotation.z += 0.01;
       updateCameraPos();
-      renderer.render( scene, camera );
+      this.renderer.render( scene, camera );
     };
 
-    animate();
+    this.renderer.setAnimationLoop(animate);
+  },
+  unmounted() {
+    this.renderer.setAnimationLoop(null);
   }
 }
 
