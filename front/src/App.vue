@@ -19,7 +19,7 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
 
   <div class="lg:h-screen lg:flex lg:flex-col lg:justify-center">
-    <RouterView />
+    <RouterView :key="$route.path"/>
   </div>
 </template>
 

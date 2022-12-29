@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import CvDisplay from "@/views/CvDisplay.vue";
-import ArticleFolderView from "@/views/ArticleFolderView.vue";
+import ArticleFolderView from "@/views/ArticleView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,9 +25,9 @@ const router = createRouter({
       component: CvDisplay
     },
     {
-      path: '/articles/:id?',
+      path: '/articles/:id*',
       name: 'articles',
-      component: () => import('../views/ArticleFolderView.vue')
+      component: () => import('../views/ArticleView.vue')
     }
   ]
 })
