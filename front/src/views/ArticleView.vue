@@ -1,34 +1,29 @@
 <template>
-  <nav class="flex" aria-label="Breadcrumb">
+  <nav class="lg:h-3/12" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-3">
       <li class="inline-flex items-center">
-        <RouterLink to="/articles" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+        <RouterLink to="/articles" class="inline-flex items-center text-4xl font-bold text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
           Articles
         </RouterLink>
+        <svg class="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
       </li>
-      <li>
+      <li v-for="(elem, index) of $route.path.split('/').slice(2)">
         <div class="flex items-center">
-          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-          <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Projects</a>
-        </div>
-      </li>
-      <li aria-current="page">
-        <div class="flex items-center">
-          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-          <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Flowbite</span>
+          <RouterLink :to="getCalculatedPath(index)" class="m-1 text-4xl font-bold text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">{{decodeURI(elem)}}</RouterLink>
+          <svg class="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
         </div>
       </li>
     </ol>
   </nav>
   <h1 v-if="!isLoaded">Loading...</h1>
-  <div v-else class="lg:h-screen">
+  <div v-else class="lg:h-10/12">
     <div v-if="error">
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">Oh no! An error occurred while requesting Github API !</h1>
       <p class="my-4 text-lg text-gray-500">{{ error.message }}</p>
     </div>
-    <div v-else class="lg:h-screen">
+    <div v-else>
       <ArticleFolder v-if="isFolder" :data="element"></ArticleFolder>
-      <ArticleFile class="lg:h-screen" v-else :value="element"></ArticleFile>
+      <ArticleFile v-else :value="element"></ArticleFile>
     </div>
   </div>
 </template>
@@ -69,6 +64,21 @@ export default defineComponent({
 
       this.isLoaded = true;
     });
+  },
+  methods: {
+    getCalculatedPath(index: number) {
+      let path = this.$route.path.split("/");
+      const iter = path.length - (index +3);
+      console.log(path.length)
+      console.log(index)
+      for(let cnt = 0; cnt < iter; cnt++) {
+
+        console.log(path)
+        path.pop();
+        console.log(path)
+      }
+      return path.join('/');
+    }
   }
 });
 </script>

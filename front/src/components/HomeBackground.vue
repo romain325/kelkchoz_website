@@ -4,7 +4,9 @@
 </template>
 
 <script lang="ts">
-import * as THREE from "three";
+import * as THREE from "three"
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import {FontLoader} from "three/examples/jsm/loaders/FontLoader";
 
 export default {
   data() {
@@ -39,7 +41,6 @@ export default {
     const torusKnotMaterial = new THREE.MeshBasicMaterial( { color: lightPurple, wireframe: true } );
     const torusKnot = new THREE.Mesh( torusKnotGeom, torusKnotMaterial );
     scene.add(torusKnot);
-
 
     camera.position.z = 50;
     let mvmtAcceleration = 0.05;
