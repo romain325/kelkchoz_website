@@ -5,10 +5,9 @@
 
 <script lang="ts">
 import * as THREE from "three"
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import {FontLoader} from "three/examples/jsm/loaders/FontLoader";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   data() {
     return {
       renderer: new THREE.WebGLRenderer({alpha: true})
@@ -16,11 +15,11 @@ export default {
   },
   mounted() {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera( 80, this.$refs.playground.clientWidth/this.$refs.playground.clientHeight, 0.1, 1000 );
+    const camera = new THREE.PerspectiveCamera( 80, (<HTMLElement>this.$refs.playground).clientWidth / (<HTMLElement>this.$refs.playground).clientHeight, 0.1, 1000 );
 
-    this.renderer.setSize( this.$refs.playground.clientWidth,this.$refs.playground.clientHeight );
-    this.renderer.setClearColor(0x000000,0)
-    this.$refs.playground.appendChild( this.renderer.domElement );
+    this.renderer.setSize( (<HTMLElement>this.$refs.playground).clientWidth, (<HTMLElement>this.$refs.playground).clientHeight );
+    this.renderer.setClearColor(0x000000,0);
+    (<HTMLElement>this.$refs.playground).appendChild( this.renderer.domElement );
 
     const darkPurple = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-primary').replace("#","0x"),16);
     const lightPurple = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-third').replace("#","0x"),16);
@@ -51,7 +50,7 @@ export default {
 
     const resizeRender = () => {
       const canvas = this.renderer.domElement;
-      const playground = this.$refs.playground;
+      const playground = (<HTMLElement>this.$refs.playground);
       const needAdaptation = canvas.width !== playground.clientWidth || canvas.height !== playground.clientHeight;
       if(needAdaptation) {
         this.renderer.setSize(playground.clientWidth, playground.clientHeight);
@@ -79,7 +78,7 @@ export default {
   unmounted() {
     this.renderer.setAnimationLoop(null);
   }
-}
+});
 
 
 </script>

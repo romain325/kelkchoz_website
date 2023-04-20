@@ -17,7 +17,7 @@
   </nav>
   <h1 v-if="!isLoaded">Loading...</h1>
   <div v-else class="lg:h-10/12">
-    <div v-if="error">
+    <div v-if="error.message">
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">Oh no! An error occurred while requesting Github API !</h1>
       <p class="my-4 text-lg text-gray-500">{{ error.message }}</p>
     </div>
@@ -40,15 +40,14 @@ export default defineComponent({
   components: {ArticleFile, ArticleFolder},
   data() {
     return {
-      element: null,
+      element: null as any,
       isFolder: true,
       isLoaded: false,
-      error: null,
+      error: {} as {message: string},
     }
   },
   mounted() {
     const route = useRoute();
-    console.log(route.params.id)
     let url = "/articles";
     for (let idElement of route.params.id) {
       url += ("/" + idElement);
@@ -69,13 +68,8 @@ export default defineComponent({
     getCalculatedPath(index: number) {
       let path = this.$route.path.split("/");
       const iter = path.length - (index +3);
-      console.log(path.length)
-      console.log(index)
       for(let cnt = 0; cnt < iter; cnt++) {
-
-        console.log(path)
         path.pop();
-        console.log(path)
       }
       return path.join('/');
     }

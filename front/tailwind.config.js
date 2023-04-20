@@ -14,5 +14,5 @@ module.exports = {
       grey: 'rgba(235, 235, 235, 0.64)',
     }
   },
-  plugins: [],
+  plugins: [require('daisyui')],
 }

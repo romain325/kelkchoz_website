@@ -17,14 +17,14 @@ export default defineComponent({
     }
   },
   mounted() {
+    if(!this.$props.value)return;
     this.content = decodeURIComponent(atob(this.$props.value.content).split('').map(function(c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     mdToHtml(this.content).then(res => {
       res.text().then(txt => {
         this.content = txt;
-        this.$refs.test.innerHTML = txt;
-        console.log(this.content)
+        (<HTMLElement>this.$refs.test).innerHTML = txt;
       })
     });
   }

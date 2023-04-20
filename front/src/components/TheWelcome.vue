@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
 import IconQuestion from "@/components/icons/IconQuestion.vue";
 import IconGraduationCap from "@/components/icons/IconGraduationCap.vue";
 import IconPeace from "@/components/icons/IconPeace.vue";
 import IconSport from "@/components/icons/IconSport.vue";
-import IconSupport from "@/components/icons/IconSupport.vue";
 import IconDocumentation from "@/components/icons/IconDocumentation.vue";
 </script>
 

@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template >
   <header class="leading-6 max-h-screen lg:flex lg:place-items-center ">
     <div class="lg:w-32  lg:mr-6">
@@ -11,18 +6,31 @@ import HelloWorld from './components/HelloWorld.vue'
 
     <div class="lg:flex lg:place-items-start lg:flex-wrap">
       <nav class="w-full lg:flex lg:flex-col">
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink v-for="route of router.getRoutes().filter(f => f.meta.show).sort((a,b) => a.meta.index - b.meta.index)" :to="route.meta.displayUrl ?? route.path">{{route.name}}</RouterLink>
+        <!-- <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/cv">Curriculum</RouterLink>
         <RouterLink to="/about">Me</RouterLink>
         <RouterLink to="/articles">Articles</RouterLink>
+        <RouterLink to="/socials">Socials</RouterLink> -->
       </nav>
     </div>
   </header>
 
   <div class="lg:h-screeen lg:flex lg:flex-col lg:justify-center">
-    <RouterView :key="$route.path"/>
+    <RouterView :key="route.path"/>
   </div>
 </template>
+
+<script setup lang="ts">
+import {RouterLink, RouterView, useRoute, useRouter} from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+import {defineComponent} from "vue";
+
+const route = useRoute();
+const router = useRouter();
+
+
+</script>
 
 <style scoped>
 

@@ -14,7 +14,7 @@ import {defineComponent} from "vue";
 export default defineComponent({
   name: "ArticleFolder",
   props: {
-    data: Array
+    data: Array<any>
   }
 })
 </script>
