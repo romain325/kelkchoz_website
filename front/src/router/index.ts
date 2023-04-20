@@ -3,6 +3,14 @@ import HomeView from '@/views/HomeView.vue'
 import CvDisplay from "@/views/CvDisplay.vue";
 import ArticleFolderView from "@/views/ArticleView.vue";
 
+declare module "vue-router" {
+  interface RouteMeta {
+    show: boolean,
+    index: number,
+    displayUrl?: string | null
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
