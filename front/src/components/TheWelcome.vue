@@ -29,7 +29,7 @@ import IconDocumentation from "@/components/icons/IconDocumentation.vue";
       <br>
       Then I obtained a "DUT Informatique" in 2021 at Clermont-Ferrand university.
       <br>
-      After that I started a Computer Science engineer degree in 3IL Limoges and {{new Date() > new Date(2024, 9-1, 1) ? 'obtained it in 2024': 'will finish it in 2024'}}.
+      After that I started a Computer Science engineer degree in 3IL Limoges and obtained it in 2024.
     </p>
   </WelcomeItem>
 

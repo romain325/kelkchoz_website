@@ -1,6 +1,6 @@
 <template>
-  <div class="flex h-full flex-col justify-evenly" >
-    <div class="flex flex-row justify-evenly">
+  <div class="flex h-full flex-col justify-evenly max-w-full wrap-anywhere" >
+    <div class="flex flex-row flex-wrap justify-evenly">
       <SocialBadge
         link="https://www.instagram.com/rooomaaaiiiiin/"
         tip="Personal instagram"
@@ -16,21 +16,19 @@
       <SocialBadge
           link="https://stackoverflow.com/users/12937433/rom1"
           tip="Stack overflow"
-          color="violet-400"
+          color="bg-violet-400"
           image="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Stack_Overflow_icon.svg/768px-Stack_Overflow_icon.svg.png"
       />
-    </div>
-    <div class="flex flex-row justify-evenly">
       <SocialBadge
           link="https://github.com/romain325"
           tip="Github"
-          color="violet-400"
+          color="bg-violet-400"
           image="https://cdn-icons-png.flaticon.com/512/38/38401.png"
       />
       <SocialBadge
           link="https://exercism.org/profiles/romain325"
           tip="Exercism"
-          color="violet-400"
+          color="bg-violet-400"
           image="https://i.imgur.com/037qDHj.jpg"
       />
       <SocialBadge

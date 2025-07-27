@@ -14,9 +14,7 @@
 </template>
 
 <style scoped>
-.btn {
-  @apply bg-primary rounded font-bold py-2 px-4 mb-4 mt-4;
-}
+
 </style>
 
 <script setup lang="ts">
