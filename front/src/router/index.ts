@@ -1,13 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import CvDisplay from "@/views/CvDisplay.vue";
-import ArticleFolderView from "@/views/ArticleView.vue";
+import HomeView from "@/views/HomeView.vue";
+import { createRouter, createWebHistory } from "vue-router";
 
 declare module "vue-router" {
   interface RouteMeta {
-    show: boolean,
-    index: number,
-    displayUrl?: string | null
+    show: boolean;
+    index: number;
+    displayUrl?: string | null;
   }
 }
 
@@ -15,17 +13,17 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'Home',
+      path: "/",
+      name: "Home",
       meta: {
         index: 1,
         show: true,
       },
-      component: HomeView
+      component: HomeView,
     },
     {
-      path: '/about',
-      name: 'About',
+      path: "/about",
+      name: "About",
       meta: {
         index: 3,
         show: true,
@@ -33,37 +31,37 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import("@/views/AboutView.vue"),
     },
     {
-      path: '/cv',
-      name: 'Curriculum',
+      path: "/cv",
+      name: "Curriculum",
       meta: {
         index: 2,
         show: true,
       },
-      component: CvDisplay
+      component: () => import("@/views/CvDisplay.vue"),
     },
     {
-      path: '/articles/:id*',
-      name: 'Articles',
+      path: "/articles/:id*",
+      name: "Articles",
       meta: {
         index: 4,
         show: true,
-        displayUrl: '/articles'
+        displayUrl: "/articles",
       },
-      component: () => import('../views/ArticleView.vue')
+      component: () => import("@/views/ArticleView.vue"),
     },
     {
-      path: '/socials',
-      name: 'Socials',
+      path: "/socials",
+      name: "Socials",
       meta: {
         index: 5,
         show: true,
       },
-      component: () => import('../views/Socials.vue')
-    }
-  ]
-})
+      component: () => import("@/views/Socials.vue"),
+    },
+  ],
+});
 
-export default router
+export default router;

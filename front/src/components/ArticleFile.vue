@@ -1,36 +1,52 @@
 <template>
-    <div ref="test" class="overflow-y-scroll"></div>
+  <div
+      ref="contentRef"
+      class="overflow-y-auto max-h-full h-full w-full px-4 box-border"
+  ></div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
-import {mdToHtml} from "@/services/githubApiService";
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { mdToHtml } from '@/services/githubApiService';
 
-export default defineComponent({
-  name: "ArticleFile",
-  props: {
-    value: Object
-  },
-  data() {
-    return {
-      content: "",
+const props = defineProps<{
+  value: { content: string };
+}>();
+
+const contentRef = ref<HTMLElement | null>(null);
+
+onMounted(async () => {
+  if (!props.value?.content) return;
+
+  const decoded = decodeURIComponent(
+      atob(props.value.content)
+          .split('')
+          .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+  );
+
+  try {
+    const response = await mdToHtml(decoded);
+    const html = await response.text();
+    if (contentRef.value) {
+      contentRef.value.innerHTML = html;
     }
-  },
-  mounted() {
-    if(!this.$props.value)return;
-    this.content = decodeURIComponent(atob(this.$props.value.content).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    mdToHtml(this.content).then(res => {
-      res.text().then(txt => {
-        this.content = txt;
-        (<HTMLElement>this.$refs.test).innerHTML = txt;
-      })
-    });
+  } catch (error) {
+    console.error('Error converting markdown:', error);
   }
 });
 </script>
 
 <style scoped>
-
+/* Scrollbar customization (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 </style>
