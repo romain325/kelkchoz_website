@@ -1,0 +1,1 @@
+import{d as n,c as s,a as t,o as l}from"./index-BUYc1O3g.js";const o={class:"flex justify-center w-full h-full align-middle"},d=n({__name:"CvDisplay",setup(r){const a="/kelkchoz_website/resume.pdf";return(c,e)=>(l(),s("div",o,[t("a",{href:a,target:"_blank"},e[0]||(e[0]=[t("button",{class:"btn btn-block btn-primary btn-large"},"Download",-1)]))]))}});export{d as default};
