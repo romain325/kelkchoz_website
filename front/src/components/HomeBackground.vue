@@ -1,5 +1,5 @@
 <template>
-  <div ref="playground" class="lg:w-full">
+  <div ref="playground" class="w-full h-full">
   </div>
 </template>
 
@@ -21,9 +21,9 @@ export default defineComponent({
     this.renderer.setClearColor(0x000000,0);
     (<HTMLElement>this.$refs.playground).appendChild( this.renderer.domElement );
 
-    const darkPurple = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-primary').replace("#","0x"),16);
-    const lightPurple = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-third').replace("#","0x"),16);
-    const secondary = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--color-secondary').replace("#","0x"),16);
+    const darkPurple = parseInt("#7F55B1".replace("#","0x"),16);
+    const lightPurple = parseInt("#9B7EBD".replace("#","0x"),16);
+    const secondary = parseInt("#F49BAB".replace("#","0x"),16);
 
 
     const sphereGeometry = new THREE.SphereGeometry( 50,32,16);
