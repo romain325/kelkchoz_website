@@ -21,10 +21,9 @@ export default defineComponent({
     this.renderer.setClearColor(0x000000,0);
     (<HTMLElement>this.$refs.playground).appendChild( this.renderer.domElement );
 
-    const darkPurple = parseInt("#7F55B1".replace("#","0x"),16);
-    const lightPurple = parseInt("#9B7EBD".replace("#","0x"),16);
-    const secondary = parseInt("#F49BAB".replace("#","0x"),16);
-
+    const darkPurple = parseInt("#635ea6".replace("#","0x"),16);
+    const lightPurple = parseInt("#a286c6".replace("#","0x"),16);
+    const secondary = parseInt("#c0addd".replace("#","0x"),16);
 
     const sphereGeometry = new THREE.SphereGeometry( 50,32,16);
     const sphereMaterial = new THREE.MeshBasicMaterial( { color: darkPurple, wireframe: true } );
