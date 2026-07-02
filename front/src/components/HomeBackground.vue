@@ -1,5 +1,5 @@
 <template>
-  <div ref="playground" class="lg:w-full">
+  <div ref="playground" class="w-full h-full">
   </div>
 </template>
 
@@ -24,7 +24,6 @@ export default defineComponent({
     const darkPurple = parseInt("#635ea6".replace("#","0x"),16);
     const lightPurple = parseInt("#a286c6".replace("#","0x"),16);
     const secondary = parseInt("#c0addd".replace("#","0x"),16);
-
 
     const sphereGeometry = new THREE.SphereGeometry( 50,32,16);
     const sphereMaterial = new THREE.MeshBasicMaterial( { color: darkPurple, wireframe: true } );
