@@ -1,13 +1,14 @@
 <template>
   <div
       ref="contentRef"
-      class="overflow-y-auto max-h-full h-full w-full px-4 box-border"
+      class="pico overflow-y-auto max-h-full h-full w-full px-4 box-border"
   ></div>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import { mdToHtml } from '@/services/githubApiService';
+import '@picocss/pico/css/pico.conditional.min.css';
 
 const props = defineProps<{
   value: { content: string };
