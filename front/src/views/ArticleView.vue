@@ -5,32 +5,40 @@
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
           <RouterLink
-              to="/articles"
-              class="inline-flex items-center text-2xl font-bold text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            to="/articles"
+            class="inline-flex items-center text-2xl font-bold text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
           >
             Articles
           </RouterLink>
-          <svg class="w-6 h-6 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-6 h-6 text-gray-400 mx-2"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path
-                fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"
+              fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
             />
           </svg>
         </li>
         <li v-for="(elem, index) in pathElements" :key="index">
           <div class="flex items-center">
             <RouterLink
-                :to="getCalculatedPath(index)"
-                class="text-2xl font-bold text-gray-700 md:ml-2 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              :to="getCalculatedPath(index)"
+              class="text-2xl font-bold text-gray-700 md:ml-2 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
             >
               {{ decodeURI(elem) }}
             </RouterLink>
-            <svg class="w-6 h-6 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+            <svg
+              class="w-6 h-6 text-gray-400 mx-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
               <path
-                  fill-rule="evenodd"
-                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clip-rule="evenodd"
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
               />
             </svg>
           </div>
@@ -62,7 +70,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, computed, onUpdated } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { useRoute } from "vue-router";
 import { getFolder } from "@/services/githubApiService";
 import ArticleFile from "@/components/ArticleFile.vue";
@@ -115,10 +123,13 @@ onMounted(async () => {
   await load();
 });
 
-// load data on mount
-onUpdated(async () => {
-  await load();
-});
+// reload when navigating to a different article/folder
+watch(
+  () => route.params.id,
+  async () => {
+    await load();
+  },
+);
 </script>
 
 <style scoped></style>
